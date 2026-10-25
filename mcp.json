@@ -1,0 +1,55 @@
+{
+  "mcpServers": {
+    "carl-linnaeus-ai": {
+      "command": "cargo",
+      "args": [
+        "run",
+        "--release",
+        "--quiet"
+      ],
+      "env": {
+        "RUST_LOG": "info",
+        "TITAN_PROTOCOL": "LINNAEUS",
+        "TARGET_CHAIN": "Sui",
+        "FIPS_203_LEVEL": "ML-KEM-768",
+        "FIPS_204_LEVEL": "ML-DSA-65"
+      },
+      "tools": [
+        {
+          "name": "generate_binomial_taxonomic_record",
+          "description": "Classifies biological specimen into Kingdom, Phylum, Class, Order, Family, Genus, Species",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "specimen_morphology": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "specimen_morphology"
+            ]
+          }
+        },
+        {
+          "name": "verify_floral_sexual_classification",
+          "description": "Evaluates stamen and pistil counts for plant order determination under Systema Naturae",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "stamen_count": {
+                "type": "integer"
+              },
+              "pistil_count": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "stamen_count",
+              "pistil_count"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
